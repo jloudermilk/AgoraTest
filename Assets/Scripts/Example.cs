@@ -3,16 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 using agora_gaming_rtc;
 
-public class example : MonoBehaviour
+public class Example : MonoBehaviour
 {
     private IRtcEngine mRtcEngine;
-    private string mVendorKey = "Fill in key";
-
+    private string mVendorKey = "87f4d68d483841cb9ce1381b3f6da56a";
+    Text text;
     // Use this for initialization
     void Start()
     {
-        GameObject g = GameObject.Find("Join");
-        Text text = g.GetComponentInChildren<Text>(true);
+
+        text = GetComponentInChildren<Text>(true);
         text.text = "Join";
     }
 
@@ -24,8 +24,8 @@ public class example : MonoBehaviour
 
     public void onButtonClicked()
     {
-        GameObject g = GameObject.Find("Join");
-        Text text = g.GetComponentInChildren<Text>(true);
+ 
+        text = GetComponentInChildren<Text>(true);
         if (ReferenceEquals(mRtcEngine, null))
         {
             startCall();
