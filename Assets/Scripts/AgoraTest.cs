@@ -2,39 +2,43 @@
 using System.Collections;
 using UnityEngine.UI;
 using agora_gaming_rtc;
+using TMPro;
 
-public class Example : MonoBehaviour
+public class AgoraTest : MonoBehaviour
 {
     private IRtcEngine mRtcEngine;
     private string mVendorKey = "87f4d68d483841cb9ce1381b3f6da56a";
-    Text text;
-    // Use this for initialization
+    TextMeshPro text;
+    Image buttonImage;
+    [Header("Join")]
+    public Color joinColor;
+    [Header("Leave")]
+    public Color leaveColor;
+
+
     void Start()
     {
 
-        text = GetComponentInChildren<Text>(true);
+        text = GetComponentInChildren<TextMeshPro>(true);
         text.text = "Join";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        buttonImage.color = joinColor;
     }
 
     public void onButtonClicked()
     {
  
-        text = GetComponentInChildren<Text>(true);
+
         if (ReferenceEquals(mRtcEngine, null))
         {
             startCall();
             text.text = "Leave";
+            buttonImage.color = leaveColor;
         }
         else
         {
             endCall();
             text.text = "Join";
+            buttonImage.color = joinColor;
         }
     }
 
